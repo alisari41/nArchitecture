@@ -13,7 +13,7 @@ namespace Persistence.Contexts
     {
         protected IConfiguration Configuration { get; set; }
         public DbSet<Brand> Brands { get; set; }
-       
+
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
@@ -29,19 +29,20 @@ namespace Persistence.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Model oluşturulduğunda Brand nesnesi hangi tabloya karşılık gelmesi gerektiği yazılır "Brands"
             modelBuilder.Entity<Brand>(a =>
             {
-                a.ToTable("Brands").HasKey(k => k.Id);
+                a.ToTable("Brands").HasKey(k => k.Id); // Pk
                 a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.Name).HasColumnName("Name");
             });
 
 
 
-            Brand[] brandEntitySeeds = { new(1, "BMW"), new(2, "Mercedes") };
+            Brand[] brandEntitySeeds = { new(1, "BMW"), new(2, "Mercedes") }; // Migrate ettiğimde bana bir iki tane test datası oluşturması için
             modelBuilder.Entity<Brand>().HasData(brandEntitySeeds);
 
-           
+
         }
     }
 }

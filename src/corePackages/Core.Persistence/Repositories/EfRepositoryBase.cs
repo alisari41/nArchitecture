@@ -10,6 +10,7 @@ public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IR
     where TEntity : Entity
     where TContext : DbContext
 {
+    // < Hangi Entity/Tablo Hangi Context/Bağlantı : Hangi Soyut İnterface şeklinde dışarıdan yollanılacak 
     protected TContext Context { get; }
 
     public EfRepositoryBase(TContext context)
