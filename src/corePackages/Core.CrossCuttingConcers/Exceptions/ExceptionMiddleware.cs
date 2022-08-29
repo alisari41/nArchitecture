@@ -16,6 +16,7 @@ public class ExceptionMiddleware
 
     public async Task Invoke(HttpContext context)
     {
+        // Tüm projede sadece bir try-catch var bütün istekler buradan geçiyor
         try
         {
             await _next(context);
@@ -30,7 +31,7 @@ public class ExceptionMiddleware
     {
         context.Response.ContentType = "application/json";
 
-        if (exception.GetType() == typeof(ValidationException)) return CreateValidationException(context, exception);
+        if (exception.GetType() == typeof(ValidationException)) return CreateValidationException(context, exception); // Oluşan Exception türü ValidationException ise CreateValidationException'ı döndür
         if (exception.GetType() == typeof(BusinessException)) return CreateBusinessException(context, exception);
         if (exception.GetType() == typeof(AuthorizationException))
             return CreateAuthorizationException(context, exception);

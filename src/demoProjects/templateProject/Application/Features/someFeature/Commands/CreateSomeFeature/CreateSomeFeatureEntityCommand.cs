@@ -14,6 +14,7 @@ namespace Application.Features.someFeature.Commands.CreateSomeFeature
 {
     public class CreateSomeFeatureEntityCommand : IRequest<CreatedSomeFeatureEntityDto>
     {
+        //API den hangileri eklenmek isteniyorsan tablodaki veriler yazılır
         public string Name { get; set; }
         public class CreateSomeFeatureEntityCommandHandler : IRequestHandler<CreateSomeFeatureEntityCommand, CreatedSomeFeatureEntityDto>
         {
