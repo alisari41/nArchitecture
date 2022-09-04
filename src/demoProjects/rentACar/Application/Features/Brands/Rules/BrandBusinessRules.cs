@@ -26,5 +26,12 @@ namespace Application.Features.Brands.Rules
             IPaginate<Brand> result = await _brandRepository.GetListAsync(b => b.Name == name); // IPaginate sayfalama yapmak için yazıldı
             if (result.Items.Any()) throw new BusinessException("Brand name exists."); // BusinessException için "Core.CrossCuttingConcerns" dan Referans almak gerekir
         }
+
+        public void BrandShouldExitsWhenRequested(Brand brand)
+        {
+            // Eğer bir Brand (marka) talep ediliyorsa o markanın olması gerekir.
+
+            if (brand == null) throw new BusinessException("Requested brand does not exits"); // BusinessException için "Core.CrossCuttingConcerns" dan Referans almak gerekir
+        }
     }
 }
