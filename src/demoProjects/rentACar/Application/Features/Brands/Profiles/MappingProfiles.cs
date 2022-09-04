@@ -22,7 +22,11 @@ namespace Application.Features.Brands.Profiles
             // AutoMapper'in Profile Sınıfından gelir Amacı: Neyi Neye maplicez Source:kaynak Destination: Hedef
             CreateMap<Brand, CreatedBrandDto>().ReverseMap(); // ReverseMap() iki türlüde mapleme yapmayı sağlar
             CreateMap<Brand, CreateBrandCommand>().ReverseMap(); // ReverseMap() iki türlüde mapleme yapmayı sağlar
+
             CreateMap<IPaginate<Brand>, BrandListModel>().ReverseMap();
+            CreateMap<Brand, BrandListDto>().ReverseMap();
+
+
         }
     }
 }
