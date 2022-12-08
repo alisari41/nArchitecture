@@ -1,9 +1,4 @@
 ﻿using Core.Persistence.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
@@ -13,6 +8,7 @@ namespace Domain.Entities
         // Çıplak Class kalmayacak implement edilcek ilerde soyutlama yapmak kolay olur
 
         public string Name { get; set; }
+        public virtual ICollection<Model> Models { get; set; } // Bir markanın birden fazla modeli olabileceği için bu şekilde yazıldı
 
         public Brand()
         {
