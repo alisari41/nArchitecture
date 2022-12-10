@@ -1,5 +1,7 @@
 ﻿using Application.Features.Models.Queries.GetListModel;
+using Application.Features.Models.Queries.GetListModelByDynamic;
 using Core.Application.Requests;
+using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -16,6 +18,15 @@ namespace WebAPI.Controllers
                                                                                       // getListBrandQuery.PageRequest = pageRequest;
 
             var result = await Mediator.Send(getLisModelQuery);
+            return Ok(result);
+        }
+
+        [HttpPost("GetList/ByDynamic")]
+        public async Task<ActionResult> GetListByDinamic([FromQuery] PageRequest pageRequest, [FromBody] Dynamic dynamic) // Dynamic olduğu için HttpPost kullanıldı
+        {
+            GetListModelByDynamicQuery getLisModelByDinamicQuery = new() { PageRequest = pageRequest, Dynamic =dynamic};
+
+            var result = await Mediator.Send(getLisModelByDinamicQuery);
             return Ok(result);
         }
     }
