@@ -4,6 +4,7 @@ namespace Core.Security.Entities;
 
 public class RefreshToken : Entity
 {
+    // RefreshToken: JWT 'nin bir süresi var kullanıcıdan sürekli giriş yapmasını engellemek için kullanılır.
     public int UserId { get; set; }
     public string Token { get; set; }
     public DateTime Expires { get; set; }

@@ -10,7 +10,7 @@ public class User : Entity
     public string Email { get; set; }
     public byte[] PasswordSalt { get; set; }
     public byte[] PasswordHash { get; set; }
-    public bool Status { get; set; }
+    public bool Status { get; set; } // Aktiflik Durumu
     public AuthenticatorType AuthenticatorType { get; set; }
 
     public virtual ICollection<UserOperationClaim> UserOperationClaims { get; set; }

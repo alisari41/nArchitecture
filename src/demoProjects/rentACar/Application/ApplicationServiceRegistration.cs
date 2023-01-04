@@ -1,4 +1,6 @@
-﻿using Application.Features.Brands.Rules;
+﻿using Application.Features.Auths.Rules;
+using Application.Features.Brands.Rules;
+using Application.Services.AuthService;
 using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using MediatR;
@@ -22,6 +24,7 @@ namespace Application
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddScoped<BrandBusinessRules>(); // Business Kuralları bir kere bellekte durur.
+            services.AddScoped<AuthBusinessRules>(); // Business Kuralları bir kere bellekte durur.
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly()); // Fluent Validation: Bir nesnenin özelliklerinin iş kurallarına dahil etmek için format uygunluğu ile ilgili
             // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>)); // Rol Bazlı Yetkilendirme
@@ -30,6 +33,8 @@ namespace Application
             // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>)); // Loglama  
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+
+            services.AddScoped<IAuthService, AuthManager>(); // JWT 
 
             return services;
 

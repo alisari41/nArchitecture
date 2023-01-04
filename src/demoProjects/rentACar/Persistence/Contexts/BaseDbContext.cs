@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Core.Security.Entities;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -10,6 +11,13 @@ namespace Persistence.Contexts
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Model> Models { get; set; }
 
+
+        #region JWT (Json Web Token)
+        public DbSet<User> Users { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+        #endregion
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
